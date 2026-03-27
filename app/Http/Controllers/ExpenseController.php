@@ -30,12 +30,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        // $table->id();
-        // $table->string('title');
-        // $table->decimal('amount', 10, 2);
-        // $table->string('category');
-        // $table->date('date');
-        // $table->timestamps();
+
         Expense::create([
             'title' => $request->title,
             'amount' => $request->amount,
