@@ -54,7 +54,13 @@ class ExpenseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $expense = Expense::find($id);
+
+        if(!$expense){
+            return "Database id ".$id . " id not found";
+        }
+
+        return view('expenses.edit' , ['expense' => $expense]);
     }
 
     /**
@@ -62,7 +68,7 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
