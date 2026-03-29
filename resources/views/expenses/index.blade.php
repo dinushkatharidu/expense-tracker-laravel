@@ -34,7 +34,7 @@
                             <td class="fw-bold text-danger">{{ number_format($expense->amount, 2) }}</td>
                             <td>{{ $expense->date }}</td>
                             <td>
-                                <button class="btn btn-sm btn-warning">Edit</button>
+                                <a href="/expenses/{{$expense->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
                                 <button class="btn btn-sm btn-danger">Delete</button>
                             </td>
                         </tr>

@@ -56,11 +56,11 @@ class ExpenseController extends Controller
     {
         $expense = Expense::find($id);
 
-        if(!$expense){
-            return "Database id ".$id . " id not found";
+        if (!$expense) {
+            return "Database id " . $id . " id not found";
         }
 
-        return view('expenses.edit' , ['expense' => $expense]);
+        return view('expenses.edit', ['expense' => $expense]);
     }
 
     /**
@@ -68,7 +68,15 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        $expense = Expense::findOrFail($id);
+
+        $expense->update([
+            'title' => $request->title,
+            'amount' => $request->amount,
+            'category' => $request->category,
+        ]);
+
+        return redirect('/expenses');
     }
 
     /**
