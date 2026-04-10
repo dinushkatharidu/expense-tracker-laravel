@@ -30,6 +30,12 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'category' => 'required|in:Food,Transport,Health,Bills,Other',
+            'date' => 'required|date',
+        ]);
 
         Expense::create([
             'title' => $request->title,
@@ -68,7 +74,10 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $expense = Expense::findOrFail($id);
+
+
 
         $expense->update([
             'title' => $request->title,
