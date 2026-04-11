@@ -44,7 +44,7 @@ class ExpenseController extends Controller
             'date' => $request->date
         ]);
 
-        return redirect('expenses');
+        return redirect('expenses')->with('success', 'Expense successfully added!');
     }
 
     /**
@@ -85,7 +85,7 @@ class ExpenseController extends Controller
             'category' => $request->category,
         ]);
 
-        return redirect('/expenses');
+        return redirect('/expenses')->with('success','Expense updated successfuly!');
     }
 
     /**
@@ -95,6 +95,6 @@ class ExpenseController extends Controller
     {
         $expense = Expense::findOrFail($id);
         $expense->delete();
-        return redirect("/expenses");
+        return redirect("/expenses")->with('success', 'Expense deleted successfuly!');
     }
 }

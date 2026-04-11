@@ -15,6 +15,17 @@
             <h2 class="text-primary">💰 My Expense Tracker</h2>
             <a href="/expenses/create" class="btn btn-success">+ Add New Expense</a>
         </div>
+        <div class="container mt-5">
+
+            {{-- Flash Message --}}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
+        </div>
 
         <div class="card shadow">
             <div class="card-body">
@@ -48,7 +59,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                        
+
                     </tbody>
                 </table>
 
