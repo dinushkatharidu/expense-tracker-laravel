@@ -12,7 +12,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expenses = Expense::all();
+        $expenses = Expense::paginate(10);
 
         return view('expenses.index', ['allExpenses' => $expenses]);
     }

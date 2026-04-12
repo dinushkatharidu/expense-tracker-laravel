@@ -62,6 +62,9 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center mt-3">
+                    {{$allExpenses->links()}}
+                </div>
 
                 @if ($allExpenses->isEmpty())
                     <p class="text-center text-muted">No expenses recorded yet.</p>
