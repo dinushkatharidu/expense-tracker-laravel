@@ -13,8 +13,12 @@ class ExpenseController extends Controller
     public function index()
     {
         $expenses = Expense::paginate(10);
+        $total = Expense::sum('amount');
 
-        return view('expenses.index', ['allExpenses' => $expenses]);
+        return view('expenses.index', ['
+        allExpenses' => $expenses,
+        'total' => $total ,
+        ]);
     }
 
     /**

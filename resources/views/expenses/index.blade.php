@@ -26,6 +26,17 @@
             @endif
 
         </div>
+        {{-- Total Amount Card --}}
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                        <h6 class="card-title">💰 Total Expenses</h6>
+                        <h3 class="fw-bold">LKR {{ number_format($total, 2) }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="card shadow">
             <div class="card-body">
@@ -63,7 +74,7 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center mt-3">
-                    {{$allExpenses->links()}}
+                    {{ $allExpenses->links() }}
                 </div>
 
                 @if ($allExpenses->isEmpty())
