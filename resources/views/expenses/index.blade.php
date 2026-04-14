@@ -37,6 +37,29 @@
                 </div>
             </div>
         </div>
+        {{-- Category Wise Totals --}}
+<div class="row mb-4">
+    @foreach($categoryTotals as $cat)
+        <div class="col">
+            <div class="card shadow-sm text-center border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        @if($cat->category == 'Food')
+                        @elseif($cat->category == 'Transport')
+                        @elseif($cat->category == 'Health')
+                        @elseif($cat->category == 'Bills')
+                        @else 
+                        @endif
+                        {{ $cat->category }}
+                    </h6>
+                    <h5 class="fw-bold text-danger">
+                        LKR {{ number_format($cat->total, 2) }}
+                    </h5>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
 
         <div class="card shadow">
             <div class="card-body">

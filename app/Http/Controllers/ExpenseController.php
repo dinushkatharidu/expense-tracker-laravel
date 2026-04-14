@@ -14,10 +14,15 @@ class ExpenseController extends Controller
     {
         $expenses = Expense::paginate(10);
         $total = Expense::sum('amount');
+        $categoryTotals = Expense::selectRaw('category, SUM(amount) as total')
+            ->groupBy('category')
+            ->get();
 
-        return view('expenses.index', ['
+        return view('expenses.index', [
+            '
         allExpenses' => $expenses,
-        'total' => $total ,
+            'total' => $total,
+            'categoryTotals' => $categoryTotals
         ]);
     }
 
@@ -89,7 +94,7 @@ class ExpenseController extends Controller
             'category' => $request->category,
         ]);
 
-        return redirect('/expenses')->with('success','Expense updated successfuly!');
+        return redirect('/expenses')->with('success', 'Expense updated successfuly!');
     }
 
     /**
